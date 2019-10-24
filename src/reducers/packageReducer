@@ -1,0 +1,17 @@
+const initialState = {
+    packages: []
+};
+
+export default (state = initialState, { type, payload }) => {
+    switch (type) {
+
+        case "REFRESH_PACKAGES":
+            return {
+                ...state,
+                packages: payload
+            };
+
+        default:
+            return state;
+    }
+};

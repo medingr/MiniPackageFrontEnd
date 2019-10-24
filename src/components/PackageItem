@@ -1,0 +1,25 @@
+import React from 'react';
+
+class PackageItem extends React.Component {
+
+    render(){
+
+        const {parts} = this.props;
+
+        return (
+            <div>
+                {parts.map(
+                    (item, index) =>
+                        <div key={index}>
+                          <span>{item}</span>
+                        </div>)
+                }
+            </div>
+        );
+    }
+
+
+}
+
+export default PackageItem;
+

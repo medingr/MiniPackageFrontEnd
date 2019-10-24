@@ -1,0 +1,48 @@
+import React from 'react';
+import {connect} from "react-redux";
+import PackageResource from "../api/PackageResource";
+import PackageItem from "./PackageItem";
+
+
+class MainPackage extends React.Component {
+
+    componentDidMount() {
+
+        PackageResource.getAll()
+            .then(res => res.json())
+            .then(res => {
+                this.props.refreshTodos( res._embedded.packages)
+            })
+
+    }
+
+    render () {
+        return (
+            <div>
+                <PackageItem  />
+            </div>
+        );
+
+    }
+}
+
+
+const mapStateToProps = state => ({
+    todoArr: state.todoRedux.todos
+});
+
+
+const mapDispatchToProps = dispatch => ({
+
+    refreshTodos: packages => dispatch({
+        type: 'REFRESH_PACKAGES',
+        payload: packages
+    }),
+
+});
+
+const generateID = () => {
+    return new Date().getTime() + Math.random();
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPackage);

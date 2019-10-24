@@ -1,0 +1,6 @@
+export default {
+    getAll: () => fetch(
+        "localhost:8081/miniPackage",
+        {mode: 'cors'}
+    ),
+}
